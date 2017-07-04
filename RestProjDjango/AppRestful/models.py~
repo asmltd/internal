@@ -9,6 +9,9 @@ class Userdetail(models.Model):
     Name = models.CharField(max_length=50)
     Id =  models.IntegerField()
     email = models.CharField(max_length=50)
+    Age = models.IntegerField()
+    Dob = models.DateField()
+    Doj = models.DateField()
 
     class Meta:
         #verbose_name = "Userdetail"
@@ -16,17 +19,21 @@ class Userdetail(models.Model):
         db_table = 'tableuser'
 
     def __unicode__(self):
-        return '%s %d %s' % (self.Name, self.Id, self.email)
+        return '%s %d %s %d %s %s' % (self.Name, self.Id, self.email, self.Age, self.Dob, self.Doj)
          #return self.Name
 
 class Student(models.Model):
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
+    Object = models.IntegerField()
+    Giventime = models.DateTimeField()
+    ExpectedReturnTime = models.DateTimeField()
+    GivenTo = models.ForeignKey(Userdetail, on_delete=models.CASCADE)
+
     #serdetail = models.ForeignKey(Userdetail)
 
     class Meta:
-        verbose_name = "Student"
-        verbose_name_plural = "Students"
+       # verbose_name = "Student"
+       # verbose_name_plural = "Students"
+         db_table = 'tablestudent'
 
     def __unicode__(self):
-        return '%s %s' % (self.first_name, self.last_name)
+        return '%d' % (self.Object)

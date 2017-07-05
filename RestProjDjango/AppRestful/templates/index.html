@@ -1,43 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="Wakeup">
+<html lang="en" ng-app="internalApp">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Asm internal app</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/media/css/bootstrap.min.css">
-    <script src="/media/js/jquery.min.js"></script>
-    <script src="/media/js/bootstrap.min.js"></script>
-    <script src="/media/js/angular/angular.js" type="text/javascript"></script>
-    <script src="/media/js/angular/angular-sanitize.js" type="text/javascript"></script>
-    <script src="/media/js/angular/angular-ui-router.js" type="text/javascript"></script>
-    <script src="/media/js/angular/angular-route.js" type="text/javascript"></script>
-    <script src="/media/js/angular/angular-resource.js" type="text/javascript"></script>
-    <script src="/media/js/highcharts.js"></script>
-    <script src="/media/js/angular_app.js" type="text/javascript"></script>
-    <script src="/media/js/factory/http_factory.js" type="text/javascript"></script>
-    <script src="/media/js/modules/dashboard.js" type="text/javascript"></script>
-    <script src="/media/js/modules/expenses.js" type="text/javascript"></script>
-    <script src="/media/js/modules/editable.js" type="text/javascript"></script>
-    <script src="/media/js/modules/payments.js" type="text/javascript"></script>
+
+    <!-- Icons -->
+    <link href="media/css/font-awesome.css" rel="stylesheet">
+    <link href="media/css/simple-line-icons.css" rel="stylesheet">
+
+    <!-- Main styles for this application -->
+    <link href="media/css/style.css" rel="stylesheet">
+
+    <!-- Bootstrap and necessary plugins -->
+    <script src="media/js/jquery.min.js"></script>
+    <script src="media/js/tether.min.js"></script>
+    <script src="media/js/bootstrap.min.js"></script>
+    <script src="media/js/pace.min.js"></script>
+
+    <!-- Main scripts -->
+    <script src="media/js/app.js"></script>
+
 </head>
-<body ng-controller="wakeup_controller">
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" ui-sref="dashboard">WakeUp</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a ui-sref="dashboard">Home</a></li>
-            <li><a ui-sref="expenses">Expenses Report</a></li>
-            <li><a ui-sref="editable">Edit my expense</a></li>
-            <li><a ui-sref="payments">Monthly Payments</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ user.username }}</a></li>
-            <li><a href="/accounts/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-        </ul>
-    </div>
-</nav>
+<body >
 
 <div class="content-wrapper">
 

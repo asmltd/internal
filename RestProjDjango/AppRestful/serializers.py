@@ -4,7 +4,7 @@ from .models import Userdetail, Student
 class UserdetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Userdetail
-        fields = ('Name', 'UserId', 'email', 'Age', 'Dob', 'Doj')
+        fields = ('Name', 'UserId', 'email', 'Age', 'Dob', 'Doj', 'Salary', 'Designation','ProjectName', 'Qualification', 'Teamlead', 'ClientName', 'Location')
 
 class StudentSerializer(serializers.ModelSerializer):
     class Meta:

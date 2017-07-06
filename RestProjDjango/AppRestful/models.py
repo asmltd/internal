@@ -2,25 +2,35 @@ from __future__ import unicode_literals
 from rest_framework import serializers
 from django.db import models
 
+
 # Create your models here.
 
 class Userdetail(models.Model):
-    
     Name = models.CharField(max_length=50)
-    UserId =  models.IntegerField()
+    UserId = models.IntegerField()
     email = models.CharField(max_length=50)
     Age = models.IntegerField()
     Dob = models.DateField()
     Doj = models.DateField()
+    Salary = models.IntegerField(default=0)
+    Designation = models.CharField(max_length=50, default="")
+    ProjectName = models.CharField(max_length=50,  default="")
+    Qualification = models.CharField(max_length=50, default="")
+    Teamlead = models.CharField(max_length=50, default="")
+    ClientName = models.CharField(max_length=50, default="")
+    Location = models.CharField(max_length=50, default="")
 
-    #class Meta:
-        #verbose_name = "Userdetail"
-        #verbose_name_plural = "Userdetails"
-        #db_table = 'tableuser'
+    # class Meta:
+    # verbose_name = "Userdetail"
+    # verbose_name_plural = "Userdetails"
+    # db_table = 'tableuser'
 
     def __unicode__(self):
-        return '%s %d %s %d %s %s' % (self.Name, self.UserId, self.email, self.Age, self.Dob, self.Doj)
-         #return self.Name
+        return '%s %d %s %d %s %s %d %s %s %s %s %s %s' % (
+        self.Name, self.UserId, self.email, self.Age, self.Dob, self.Doj, self.Salary, self.Designation,
+        self.ProjectName, self.Qualification, self.Teamlead, self.ClientName, self.Location)
+        # return self.Name
+
 
 class Student(models.Model):
     Object = models.CharField(max_length=50)
@@ -28,14 +38,13 @@ class Student(models.Model):
     ExpectedReturnTime = models.DateField()
     GivenTo = models.ForeignKey(Userdetail, on_delete=models.CASCADE)
 
-    #userdetail = models.ForeignKey(Userdetail)
+    # userdetail = models.ForeignKey(Userdetail)
 
-    #class Meta:
+    # class Meta:
     #    verbose_name = "Student"
     #    verbose_name_plural = "Students"
     #    db_table = 'objects'
-   
-    def __unicode__(self):
-       return '%s' % (self.Object)
 
+    def __unicode__(self):
+        return '%s' % (self.Object)
 

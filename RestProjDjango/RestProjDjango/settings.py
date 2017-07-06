@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -83,9 +83,9 @@ WSGI_APPLICATION = 'RestProjDjango.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Newdatabase',
+        'NAME': 'internal',
         'USER': 'root',
-        'PASSWORD': 'root',
+        'PASSWORD': 'asm123',
         'HOST': '',
         'PORT': '',
   }

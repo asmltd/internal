@@ -22,7 +22,7 @@ class UserdetailViewSet(viewsets.ModelViewSet):
     
 @login_required
 def index(request):
-    return render(request, 'home.html', {})
+    return render(request, 'index.html', {})
 
 def signin(request):
     next = request.GET.get('next')

@@ -1,0 +1,10 @@
+.login-box-body{
+    background: #fff;
+    padding: 20px;
+    border-top: 0;
+    color: #666;
+}
+.login-box {
+    width: 360px;
+    margin: 7% auto;
+}

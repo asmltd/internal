@@ -2,49 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Asm internal app</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/media/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/media/css/bootstrap.css">
-    <script src="/media/js/bootstrap.js"></script>
+
+    <!-- Icons -->
+    <link href="/media/css/font-awesome.css" rel="stylesheet">
+    <link href="/media/css/simple-line-icons.css" rel="stylesheet">
+
+    <!-- Main styles for this application -->
+    <link href="/media/css/bootstrap.css" rel="stylesheet">
+    <link href="/media/css/style.css" rel="stylesheet">
+    <link href="/media/css/mystyle.css" rel="stylesheet">
+
+    <!-- Bootstrap and necessary plugins -->
+    <script src="/media/js/jquery.min.js"></script>
+    <script src="/media/js/tether.min.js"></script>
     <script src="/media/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+    <script src="/media/js/pace.min.js"></script>
+
+    <!-- Main scripts -->
+    <script src="/media/js/app.js"></script>
+
 </head>
-
 <body>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#"><img src="/media/img/index.png" alt="ASM TECHNOLOGIES LIMITED"/></a>
-    </div>
-  </div>
-</nav>
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-3">
-
+<div class="container ">
+    <div class="login-box">
+    <div class="card login-box-body">
+        <div class="card-header">
+            <strong>Login to continue</strong>
         </div>
-        <div class="col-sm-6" style="background-color:orange">
-            <form method="POST" action="/accounts/login/">
+        <div class="card-block">
+            <p class="login-box-msg"><img src="/media/img/asmltd-logo.png" style="width: 270px;"
+                                      alt="Ruckus - Simply Better Wireless" title="Ruckus Wireless"></p>
+            {% if error %}
+                <div class='alert alert-dismissible alert-danger'>
+                    <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
+                    <h4><i class='icon fa fa-close'></i> Username or password invalid</h4>
+                </div>
+            {% endif %}
+            <form action="" method="post">
                 {% csrf_token %}
                 <div class="form-group">
-                    <label for="usnm">Username:</label>
-                    <input type="text" class="form-control" id="usnm" name="username">
+                    <!--<label for="username">Username</label>-->
+                    <input type="username" id="username" name="username" class="form-control"
+                           placeholder="Username..">
+                    <span class="help-block">Please enter your username</span>
                 </div>
                 <div class="form-group">
-                    <label for="pwd">Password:</label>
-                    <input type="password" class="form-control" id="pwd" name="password">
+                    <!--<label for="password">Password</label>-->
+                    <input type="password" id="password" name="password" class="form-control"
+                           placeholder="Enter Password..">
+                    <span class="help-block">Please enter your password</span>
                 </div>
-
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="card-footer text-center ">
+            <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-dot-circle-o"></i> Submit</button>
+            <button type="reset" class="btn btn-lg btn-danger"><i class="fa fa-ban"></i> Reset</button>
+        </div>
             </form>
         </div>
-        <div class="col-sm-3">
 
-        </div>
-    </div>
+    </div></div>
+
 </div>
 
 </body>

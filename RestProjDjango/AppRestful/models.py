@@ -12,13 +12,13 @@ class Userdetail(models.Model):
     Age = models.IntegerField()
     Dob = models.DateField()
     Doj = models.DateField()
-    Salary = models.IntegerField(default=0)
-    Designation = models.CharField(max_length=50, default="")
-    ProjectName = models.CharField(max_length=50,  default="")
-    Qualification = models.CharField(max_length=50, default="")
-    Teamlead = models.CharField(max_length=50, default="")
-    ClientName = models.CharField(max_length=50, default="")
-    Location = models.CharField(max_length=50, default="")
+    Salary = models.IntegerField()
+    Designation = models.CharField(max_length=50)
+    ProjectName = models.CharField(max_length=50)
+    Qualification = models.CharField(max_length=50)
+    Teamlead = models.CharField(max_length=50)
+    ClientName = models.CharField(max_length=50)
+    Location = models.CharField(max_length=50)
 
     # class Meta:
     # verbose_name = "Userdetail"
@@ -47,4 +47,19 @@ class Student(models.Model):
 
     def __unicode__(self):
         return '%s' % (self.Object)
+
+
+class Onsite(models.Model):
+    Name = models.CharField(max_length=50)
+    Entrytime = models.DateField()
+    Exittime = models.DateField()
+    Personmet = models.ForeignKey(Userdetail, on_delete=models.CASCADE)
+
+    def __unicode__(self):
+        return '%s' % (self.Name)
+
+
+
+
+
 

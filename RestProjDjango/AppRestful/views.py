@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
 from rest_framework import viewsets
 from rest_framework.views import APIView
-from .models import Userdetail, Student, Onsite
-from .serializers import UserdetailSerializer, StudentSerializer, OnsiteSerializer
+from .models import Userdetail, Student, Onsite, Session
+from .serializers import UserdetailSerializer, StudentSerializer, OnsiteSerializer, SessionSerializer
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
 
 
 # Create your views here.
@@ -26,6 +27,26 @@ class OnsiteViewSet(viewsets.ModelViewSet):
     queryset = Onsite.objects.all()
     serializer_class = OnsiteSerializer
     permission_classes = (IsAuthenticated,)
+
+
+class SessionViewSet(viewsets.ModelViewSet):
+    queryset = Session.objects.all()
+    serializer_class = SessionSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def create(self, request):
+        return Response(None, status=status.HTTP_400_BAD_REQUEST)
+
+    def list(self, request):
+        if not request.user.is_authenticated():
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+        if request.method == "GET":
+            return Response({"username": request.user.username,"Email":request.user.email,"Id":request.user.id})
+
+    def retrieve(self, request, code=None):
+        if not request.user.is_authenticated():
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
 
 
 @login_required

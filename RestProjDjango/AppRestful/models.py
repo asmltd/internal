@@ -27,8 +27,8 @@ class Userdetail(models.Model):
 
     def __unicode__(self):
         return '%s %d %s %d %s %s %d %s %s %s %s %s %s' % (
-        self.Name, self.UserId, self.email, self.Age, self.Dob, self.Doj, self.Salary, self.Designation,
-        self.ProjectName, self.Qualification, self.Teamlead, self.ClientName, self.Location)
+            self.Name, self.UserId, self.email, self.Age, self.Dob, self.Doj, self.Salary, self.Designation,
+            self.ProjectName, self.Qualification, self.Teamlead, self.ClientName, self.Location)
         # return self.Name
 
 
@@ -58,8 +58,10 @@ class Onsite(models.Model):
     def __unicode__(self):
         return '%s' % (self.Name)
 
+class Session(models.Model):
+        Username = models.CharField(max_length=50)
+        Email = models.CharField(max_length=50)
+        Userid = models.ForeignKey(Userdetail, on_delete=models.CASCADE)
 
-
-
-
-
+        def __unicode__(self):
+             return '%s' % (self.Username)

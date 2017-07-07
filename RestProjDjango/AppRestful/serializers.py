@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Userdetail, Student, Onsite
+from .models import Userdetail, Student, Onsite, Session
 
 class UserdetailSerializer(serializers.ModelSerializer):
     class Meta:
@@ -15,3 +15,8 @@ class OnsiteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Onsite
         fields = ('Name', 'Entrytime', 'Exittime', 'Personmet')
+
+class SessionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Session
+        fields = ('Username', 'Email', 'Userid')

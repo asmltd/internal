@@ -1,5 +1,5 @@
 from rest_framework import routers
-from .views import StudentViewSet, UserdetailViewSet, OnsiteViewSet
+from .views import StudentViewSet, UserdetailViewSet, OnsiteViewSet, SessionViewSet
 from django.conf.urls import url, include
 from django.contrib import admin
 from .views import *
@@ -8,6 +8,7 @@ router = routers.DefaultRouter()
 router.register(r'students', StudentViewSet)
 router.register(r'Userdetails', UserdetailViewSet)
 router.register(r'Onsites', OnsiteViewSet)
+router.register(r'Sessions', SessionViewSet)
 
 urlpatterns = [
     url(r'^accounts/login/$', signin, name='login'),

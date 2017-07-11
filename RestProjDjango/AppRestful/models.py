@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 from rest_framework import serializers
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 
 # Create your models here.
@@ -20,16 +21,12 @@ class Userdetail(models.Model):
     ClientName = models.CharField(max_length=50)
     Location = models.CharField(max_length=50)
 
-    # class Meta:
-    # verbose_name = "Userdetail"
-    # verbose_name_plural = "Userdetails"
-    # db_table = 'tableuser'
 
     def __unicode__(self):
         return '%s %d %s %d %s %s %d %s %s %s %s %s %s' % (
             self.Name, self.UserId, self.email, self.Age, self.Dob, self.Doj, self.Salary, self.Designation,
             self.ProjectName, self.Qualification, self.Teamlead, self.ClientName, self.Location)
-        # return self.Name
+
 
 
 class Student(models.Model):
@@ -37,13 +34,6 @@ class Student(models.Model):
     Giventime = models.DateField()
     ExpectedReturnTime = models.DateField()
     GivenTo = models.ForeignKey(Userdetail, on_delete=models.CASCADE)
-
-    # userdetail = models.ForeignKey(Userdetail)
-
-    # class Meta:
-    #    verbose_name = "Student"
-    #    verbose_name_plural = "Students"
-    #    db_table = 'objects'
 
     def __unicode__(self):
         return '%s' % (self.Object)
@@ -58,10 +48,6 @@ class Onsite(models.Model):
     def __unicode__(self):
         return '%s' % (self.Name)
 
-class Session(models.Model):
-        Username = models.CharField(max_length=50)
-        Email = models.CharField(max_length=50)
-        Userid = models.ForeignKey(Userdetail, on_delete=models.CASCADE)
+class Session(AbstractUser):
 
-        def __unicode__(self):
-             return '%s' % (self.Username)
+    team = models.CharField(max_length=50,default='')

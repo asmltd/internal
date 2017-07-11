@@ -17,6 +17,6 @@ class OnsiteSerializer(serializers.ModelSerializer):
         fields = ('Name', 'Entrytime', 'Exittime', 'Personmet')
 
 class SessionSerializer(serializers.ModelSerializer):
-    class Meta:
+    class Meta():
         model = Session
-        fields = ('Username', 'Email', 'Userid')
+        fields = "__all__"

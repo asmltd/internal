@@ -10,7 +10,7 @@ from rest_framework.response import Response
 
 
 # Create your views here.
-class StudentViewSet(viewsets.ModelViewSet):
+class it_deskViewSet(viewsets.ModelViewSet):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
     permission_classes = (IsAuthenticated,)

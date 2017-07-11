@@ -1,10 +1,11 @@
 from rest_framework import serializers
+from django.contrib.auth.models import User
 from .models import Userdetail, Student, Onsite, Session
 
 class UserdetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = Userdetail
-        fields = ('Name', 'UserId', 'email', 'Age', 'Dob', 'Doj', 'Salary', 'Designation','ProjectName', 'Qualification', 'Teamlead', 'ClientName', 'Location')
+        fields = ('Name', 'UserId', 'email', 'Age', 'Dob', 'Doj', 'Salary', 'Designation','ProjectName', 'Qualification', 'Teamlead', 'ClientName', 'Location','id')
 
 class StudentSerializer(serializers.ModelSerializer):
     class Meta:

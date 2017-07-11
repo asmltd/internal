@@ -1,11 +1,11 @@
 from rest_framework import routers
-from .views import StudentViewSet, UserdetailViewSet, OnsiteViewSet, SessionViewSet
+from .views import it_deskViewSet, UserdetailViewSet, OnsiteViewSet, SessionViewSet
 from django.conf.urls import url, include
 from django.contrib import admin
 from .views import *
 
 router = routers.DefaultRouter()
-router.register(r'students', StudentViewSet)
+router.register(r'it_desk', it_deskViewSet)
 router.register(r'Userdetails', UserdetailViewSet)
 router.register(r'Onsites', OnsiteViewSet)
 router.register(r'Sessions', SessionViewSet)

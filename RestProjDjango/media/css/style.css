@@ -5263,10 +5263,10 @@ header.navbar a.navbar-brand {
     width: 155px;
     height: 55px;
     padding: .5rem 1rem;
-    background-image: url(/media/img/asmlogo.jpg);
+    background-image: url(/media/img/asmltd-logo.png);
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: 70px auto
+    background-size: 150px auto
 }
 header.navbar .navbar-brand {
     margin-right: 0

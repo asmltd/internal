@@ -8,7 +8,7 @@ from django.contrib.auth.models import AbstractUser
 
 class Userdetail(models.Model):
     Name = models.CharField(max_length=50)
-    UserId = models.IntegerField()
+    UserId = models.IntegerField(default='')
     email = models.CharField(max_length=50)
     Age = models.IntegerField()
     Dob = models.DateField()
@@ -31,8 +31,8 @@ class Userdetail(models.Model):
 
 class Student(models.Model):
     Object = models.CharField(max_length=50)
-    Giventime = models.DateField()
-    ExpectedReturnTime = models.DateField()
+    Giventime = models.DateField(default='')
+    ExpectedReturnTime = models.DateField(default='')
     GivenTo = models.ForeignKey(Userdetail, on_delete=models.CASCADE)
 
     def __unicode__(self):
@@ -41,13 +41,12 @@ class Student(models.Model):
 
 class Onsite(models.Model):
     Name = models.CharField(max_length=50)
-    Entrytime = models.DateField()
-    Exittime = models.DateField()
+    Entrytime = models.DateField(default='')
+    Exittime = models.DateField(default='')
     Personmet = models.ForeignKey(Userdetail, on_delete=models.CASCADE)
 
     def __unicode__(self):
         return '%s' % (self.Name)
 
 class Session(AbstractUser):
-
-    team = models.CharField(max_length=50,default='')
+    team = models.CharField(max_length=50, default='')

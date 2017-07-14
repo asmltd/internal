@@ -13,7 +13,8 @@
                         <th>Email</th>
                         <th>Date of joining</th>
                         <th>Last login</th>
-                        <th></th>
+                        <th>Remove</th>
+                        <th>Edit</th>
                     </tr>
                     </thead>
                     <tr ng-repeat="u in Details">
@@ -22,6 +23,16 @@
                         <td>{{u.email}}</td>
                         <td>{{u.date_joined}}</td>
                         <td>{{u.last_login}}</td>
+                        <td>
+                            <span style="">
+                                <i class="fa fa-times" aria-hidden="true" ng-click="del_user(u.id)"></i>
+                            </span>
+                        </td>
+                        <td>
+                            <span style="">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            </span>
+                        </td>
                     </tr>
                 </table>
 

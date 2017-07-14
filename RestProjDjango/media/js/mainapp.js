@@ -20,5 +20,13 @@ app.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
             controller: 'user_details'
         });
 
+        $stateProvider
+        .state('add_user', {
+            url: '/add_user',
+            templateUrl: '/media/modules/add_user/add_user.html?v=' + window.version,
+            controller: 'add_user_controller'
+        });
+    $httpProvider.defaults.xsrfCookieName = 'csrftoken';
+    $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
         });
 

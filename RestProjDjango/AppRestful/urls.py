@@ -5,10 +5,10 @@ from django.contrib import admin
 from .views import *
 
 router = routers.DefaultRouter()
-router.register(r'it_desk', it_deskViewSet)
-router.register(r'Userdetails', UserdetailViewSet)
-router.register(r'Onsites', OnsiteViewSet)
-router.register(r'Sessions', SessionViewSet)
+router.register(r'api/it_desk', it_deskViewSet)
+router.register(r'api/Userdetails', UserdetailViewSet)
+router.register(r'api/Onsites', OnsiteViewSet)
+router.register(r'api/Sessions', SessionViewSet)
 
 urlpatterns = [
     url(r'^accounts/login/$', signin, name='login'),

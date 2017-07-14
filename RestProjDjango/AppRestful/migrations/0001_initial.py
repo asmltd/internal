@@ -3,8 +3,8 @@ from __future__ import unicode_literals
 
 from django.db import migrations, models
 import django.utils.timezone
-import django.contrib.auth.models
 import django.core.validators
+import django.contrib.auth.models
 
 
 class Migration(migrations.Migration):
@@ -15,44 +15,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Onsite',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('Name', models.CharField(max_length=50)),
-                ('Entrytime', models.DateField(default='')),
-                ('Exittime', models.DateField(default='')),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Student',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('Object', models.CharField(max_length=50)),
-                ('Giventime', models.DateField(default='')),
-                ('ExpectedReturnTime', models.DateField(default='')),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Userdetail',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('Name', models.CharField(max_length=50)),
-                ('UserId', models.IntegerField(default='')),
-                ('email', models.CharField(max_length=50)),
-                ('Age', models.IntegerField()),
-                ('Dob', models.DateField()),
-                ('Doj', models.DateField()),
-                ('Salary', models.IntegerField()),
-                ('Designation', models.CharField(max_length=50)),
-                ('ProjectName', models.CharField(max_length=50)),
-                ('Qualification', models.CharField(max_length=50)),
-                ('Teamlead', models.CharField(max_length=50)),
-                ('ClientName', models.CharField(max_length=50)),
-                ('Location', models.CharField(max_length=50)),
-            ],
-        ),
-        migrations.CreateModel(
-            name='Session',
+            name='employe_details',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('password', models.CharField(max_length=128, verbose_name='password')),
@@ -65,6 +28,7 @@ class Migration(migrations.Migration):
                 ('is_staff', models.BooleanField(default=False, help_text='Designates whether the user can log into this admin site.', verbose_name='staff status')),
                 ('is_active', models.BooleanField(default=True, help_text='Designates whether this user should be treated as active. Unselect this instead of deleting accounts.', verbose_name='active')),
                 ('date_joined', models.DateTimeField(default=django.utils.timezone.now, verbose_name='date joined')),
+                ('team', models.CharField(default='', max_length=50)),
                 ('groups', models.ManyToManyField(related_query_name='user', related_name='user_set', to='auth.Group', blank=True, help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.', verbose_name='groups')),
                 ('user_permissions', models.ManyToManyField(related_query_name='user', related_name='user_set', to='auth.Permission', blank=True, help_text='Specific permissions for this user.', verbose_name='user permissions')),
             ],
@@ -76,15 +40,5 @@ class Migration(migrations.Migration):
             managers=[
                 ('objects', django.contrib.auth.models.UserManager()),
             ],
-        ),
-        migrations.AddField(
-            model_name='student',
-            name='GivenTo',
-            field=models.ForeignKey(to='AppRestful.Userdetail'),
-        ),
-        migrations.AddField(
-            model_name='onsite',
-            name='Personmet',
-            field=models.ForeignKey(to='AppRestful.Userdetail'),
         ),
     ]

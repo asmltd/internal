@@ -6,7 +6,7 @@ app.controller('add_user_controller', function($rootScope, $scope, $state, $http
         // Posting data to php file
         $http({
                 method: 'POST',
-                url: '/api/Sessions/',
+                url: 'api/employe_details/',
                 data: $scope.user, //forms user object
             })
             .success(function(data) {

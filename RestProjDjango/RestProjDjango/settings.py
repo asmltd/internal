@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'RestProjDjango.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'internal',
+        'NAME': 'asm_internal',
         'USER': 'root',
         'PASSWORD': 'asm123',
         'HOST': '',
@@ -94,7 +94,7 @@ DATABASES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
-AUTH_USER_MODEL = 'AppRestful.Session'
+AUTH_USER_MODEL = 'AppRestful.employe_details'
 
 AUTH_PASSWORD_VALIDATORS = [
     # {

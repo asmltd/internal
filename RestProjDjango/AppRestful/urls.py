@@ -1,14 +1,14 @@
 from rest_framework import routers
-from .views import it_deskViewSet, UserdetailViewSet, OnsiteViewSet, SessionViewSet
+
 from django.conf.urls import url, include
 from django.contrib import admin
 from .views import *
 
 router = routers.DefaultRouter()
-router.register(r'api/it_desk', it_deskViewSet)
-router.register(r'api/Userdetails', UserdetailViewSet)
-router.register(r'api/Onsites', OnsiteViewSet)
-router.register(r'api/Sessions', SessionViewSet)
+# router.register(r'api/it_desk', it_deskViewSet)
+# router.register(r'api/Userdetails', UserdetailViewSet)
+# router.register(r'api/Onsites', OnsiteViewSet)
+router.register(r'api/employe_details', employe_detailsViewSet)
 
 urlpatterns = [
     url(r'^accounts/login/$', signin, name='login'),

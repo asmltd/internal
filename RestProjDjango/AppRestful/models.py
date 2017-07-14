@@ -5,48 +5,52 @@ from django.contrib.auth.models import AbstractUser
 
 
 # Create your models here.
+#
+# class Userdetail(models.Model):
+#     Name = models.CharField(max_length=50)
+#     UserId = models.IntegerField(default='')
+#     email = models.CharField(max_length=50)
+#     Age = models.IntegerField()
+#     Dob = models.DateField()
+#     Doj = models.DateField()
+#     Salary = models.IntegerField()
+#     Designation = models.CharField(max_length=50)
+#     ProjectName = models.CharField(max_length=50)
+#     Qualification = models.CharField(max_length=50)
+#     Teamlead = models.CharField(max_length=50)
+#     ClientName = models.CharField(max_length=50)
+#     Location = models.CharField(max_length=50)
+#
+#
+#     def __unicode__(self):
+#         return '%s %d %s %d %s %s %d %s %s %s %s %s %s' % (
+#             self.Name, self.UserId, self.email, self.Age, self.Dob, self.Doj, self.Salary, self.Designation,
+#             self.ProjectName, self.Qualification, self.Teamlead, self.ClientName, self.Location)
+#
+#
+#
+# class Student(models.Model):
+#     Object = models.CharField(max_length=50)
+#     Giventime = models.DateField(default='')
+#     ExpectedReturnTime = models.DateField(default='')
+#     GivenTo = models.ForeignKey(Userdetail, on_delete=models.CASCADE)
+#
+#     def __unicode__(self):
+#         return '%s' % (self.Object)
+#
+#
+# class Onsite(models.Model):
+#     Name = models.CharField(max_length=50)
+#     Entrytime = models.DateField(default='')
+#     Exittime = models.DateField(default='')
+#     Personmet = models.ForeignKey(Userdetail, on_delete=models.CASCADE)
+#
+#     def __unicode__(self):
+#         return '%s' % (self.Name)
+#
+# class Session(AbstractUser):
+#     team = models.CharField(max_length=50, default='')
 
-class Userdetail(models.Model):
-    Name = models.CharField(max_length=50)
-    UserId = models.IntegerField(default='')
-    email = models.CharField(max_length=50)
-    Age = models.IntegerField()
-    Dob = models.DateField()
-    Doj = models.DateField()
-    Salary = models.IntegerField()
-    Designation = models.CharField(max_length=50)
-    ProjectName = models.CharField(max_length=50)
-    Qualification = models.CharField(max_length=50)
-    Teamlead = models.CharField(max_length=50)
-    ClientName = models.CharField(max_length=50)
-    Location = models.CharField(max_length=50)
 
-
-    def __unicode__(self):
-        return '%s %d %s %d %s %s %d %s %s %s %s %s %s' % (
-            self.Name, self.UserId, self.email, self.Age, self.Dob, self.Doj, self.Salary, self.Designation,
-            self.ProjectName, self.Qualification, self.Teamlead, self.ClientName, self.Location)
-
-
-
-class Student(models.Model):
-    Object = models.CharField(max_length=50)
-    Giventime = models.DateField(default='')
-    ExpectedReturnTime = models.DateField(default='')
-    GivenTo = models.ForeignKey(Userdetail, on_delete=models.CASCADE)
-
-    def __unicode__(self):
-        return '%s' % (self.Object)
-
-
-class Onsite(models.Model):
-    Name = models.CharField(max_length=50)
-    Entrytime = models.DateField(default='')
-    Exittime = models.DateField(default='')
-    Personmet = models.ForeignKey(Userdetail, on_delete=models.CASCADE)
-
-    def __unicode__(self):
-        return '%s' % (self.Name)
-
-class Session(AbstractUser):
+class employe_details(AbstractUser):
     team = models.CharField(max_length=50, default='')

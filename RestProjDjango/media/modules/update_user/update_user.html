@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>update_user</title>
+</head>
+<body class="">
+
+<form class="col-md-6 offset-md-3" ng-submit="UpdateUser()">
+  <div class="form-group row">
+    <label class="form-control-label" for="user_name">Name</label>
+    <input type="text" class="form-control" id="user_name" placeholder="Name" ng-model="user.username" ng-bind = "user.username">
+  </div>
+  <div class="form-group row">
+    <label class="form-control-label" for="formGroupExampleInput2">Email</label>
+    <input type="email" class="form-control" id="formGroupExampleInput2" placeholder="Another input" ng-model="user.email">
+  </div>
+<div class="form-group row">
+    <label class="form-control-label" for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ng-model="user.password">
+
+</div>
+
+
+    <input class="btn btn-primary pull-right" type="submit" value="Submit">
+
+</form>
+
+<div class="col-md-6">
+    <h3>Debug</h3>
+<pre>{{ user | json}}</pre>
+
+
+</div>
+
+</body>
+</html>

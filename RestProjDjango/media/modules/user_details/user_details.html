@@ -30,13 +30,14 @@
                         </td>
                         <td>
                             <span style="">
-                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                <a><i class="fa fa-pencil-square-o" aria-hidden="true"
+                                      ng-click="edit_user(u.id)"></i></a>
                             </span>
                         </td>
                     </tr>
                 </table>
 
-
+                <!--ui-sref="update_user({id:u.id})-->
                 <!--<table class="table table-condensed">-->
                 <!--<thead>-->
                 <!--<tr>-->
@@ -102,4 +103,5 @@
                 <a class="btn btn-primary pull-right" href="/#/add_user" role="button">Create new User</a>
             </div>
         </div>
-    </div></div>
+    </div>
+</div>

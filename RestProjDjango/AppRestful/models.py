@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 from rest_framework import serializers
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.conf import settings
 
 
 # Create your models here.
@@ -53,4 +54,5 @@ from django.contrib.auth.models import AbstractUser
 
 
 class employe_details(AbstractUser):
-    team = models.CharField(max_length=50, default='')
+    # team = models.CharField(max_length=50, default='')
+    pass

@@ -20,4 +20,13 @@ app.controller('user_details', function($rootScope, $scope, $state, $http, $inte
                 bootbox.alert("Deleted");
             });
     }
+
+
+     $scope.edit_user = function(id){
+
+     $state.go('update_user',{id:id});
+
+     console.log(id);
+
+    }
 });

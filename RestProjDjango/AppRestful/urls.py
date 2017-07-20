@@ -15,7 +15,7 @@ urlpatterns = [
     url(r'^$', index, name='login'),
     url(r'^accounts/logout/$', signout, name='logout'),
     #url(r'^api/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^api/', include(router.urls)),
+    #url(r'^api/', include(router.urls)),
 ]
 
 urlpatterns += router.urls

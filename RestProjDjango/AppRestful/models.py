@@ -2,7 +2,6 @@ from __future__ import unicode_literals
 from rest_framework import serializers
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from django.conf import settings
 
 
 # Create your models here.
@@ -54,5 +53,18 @@ from django.conf import settings
 
 
 class employe_details(AbstractUser):
-    # team = models.CharField(max_length=50, default='')
-    pass
+    team = models.CharField(max_length=50, default='')
+
+    def json_ready(self, detailed=False):
+        data = {'id': self.id,
+                'username': self.username,
+                'first_name': self.first_name,
+                'last_name': self.last_name,
+                'email': self.email,
+                'team': self.team if self.team else "",
+                }
+
+        if detailed:
+            pass
+
+        return data

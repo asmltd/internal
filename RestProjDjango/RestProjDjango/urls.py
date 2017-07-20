@@ -23,6 +23,7 @@ from django.views.static import serve
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
    # url(r'^api/', include('AppRestful.urls')),
+    url(r'^api/', include('api.urls')),
     url(r'^', include('AppRestful.urls', namespace='AppRestful')),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

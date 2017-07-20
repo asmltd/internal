@@ -31,13 +31,14 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'AppRestful',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'AppRestful',
+    'api',
     'rest_framework',
 ]
 
@@ -133,14 +134,12 @@ STATIC_URL = '/static/'
 
 #STATICFILES_DIRS = ['/home/asm/TestApiProj/media/']
 
+
+
 REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-        #'rest_framework.authentication.BasicAuthentication',
-        #'rest_framework.authentication.SessionAuthentication',
-    ]
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.DjangoModelPermissions',
+    )
 }
 
 #MEDIA_ROOT = "/home/asm/TestApiProj/media/"

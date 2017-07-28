@@ -110,3 +110,11 @@ PWD = os.path.dirname(os.path.realpath(__file__))
 MEDIA_ROOT = os.path.join(PWD, "../media")
 
 MEDIA_URL = ''
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    )
+}

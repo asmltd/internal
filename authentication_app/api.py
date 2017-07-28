@@ -3,7 +3,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import status
 from .models import *
-
+import json
 
 from .models import *
 
@@ -15,8 +15,8 @@ class WMSUserViewSet(ViewSet):
 
     @csrf_exempt
     def create(self, request):
-        # if not request.user.is_authenticated():
-        #     return Response(status=status.HTTP_401_UNAUTHORIZED)
+        if not request.user.is_authenticated():
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
         try:
             data = request.data
             newuser = employe_details.objects.create(username=data['username'] if 'username' in data.keys() else "",
@@ -36,44 +36,44 @@ class WMSUserViewSet(ViewSet):
 
     def list(self, request):
 
-        # if not request.user.is_authenticated():
-        #     return Response(status=status.HTTP_401_UNAUTHORIZED)
+        if not request.user.is_authenticated():
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
 
-            if request.method == "GET":
+        if request.method == "GET":
 
-                try:
-                    page_limit = int(request.GET.get('page_limit', 10))  # Set the page limit
-                    page = int(request.GET.get('page', 1))  # Set the current page
-                except Exception as e:
-                    page_limit = 10
-                    page = 1
+            # try:
+            #     page_limit = int(request.GET.get('page_limit', 10))  # Set the page limit
+            #     page = int(request.GET.get('page', 1))  # Set the current page
+            # except Exception as e:
+            #     page_limit = 10
+            #     page = 1
+            #
+            # page -= 1  # UI uses 1 based indexing, python 0
+            # export_ = request.GET.get('export', None)
+            # filter_ = request.GET.get('filter', None)
+            # sort_ = request.GET.get('sort', None)
+            # order_ = request.GET.get('order', None)
 
-                page -= 1  # UI uses 1 based indexing, python 0
-                export_ = request.GET.get('export', None)
-                filter_ = request.GET.get('filter', None)
-                sort_ = request.GET.get('sort', None)
-                order_ = request.GET.get('order', None)
+            users = employe_details.objects.all()
 
-                users = employe_details.objects.all()
+            result = []
+            for user in users:
+                result.append({"id": user.id, "name": user.username, "email": user.email, "password": user.password})
+            # message = {"result": users,
+            #            "number_of_rows": len(users),
+            #            "page": page + 1
+            #
+            #            }
 
+            return Response(result)
 
-
-                message = {"result": users,
-                           "number_of_rows": len(users),
-                           "page": page + 1
-
-                           }
-
-                return Response(message)
-    #
-    # else:
-    # return Response(status=status.HTTP_400_BAD_REQUEST)
+            #
+        else:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
     def retrieve(self, request, pk=None):
-        # if not request.user.is_authenticated():
-        #     return Response(status=status.HTTP_401_UNAUTHORIZED)
+        if not request.user.is_authenticated():
+            return Response(status=status.HTTP_401_UNAUTHORIZED)
         if employe_details.objects.filter(pk=pk).exists():
             return Response(employe_details.objects.get(pk=pk).json_ready())
         return Response(status=status.HTTP_401_UNAUTHORIZED)
-
-

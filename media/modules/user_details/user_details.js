@@ -2,7 +2,7 @@ app.controller('user_details', function($rootScope, $scope, $state, $http, $inte
     $scope.Details = [];
 
     $scope.loadUser = function() {
-        $http.get('api/employe_details/', '')
+        $http.get('api/authentication_app/users/', '')
             .success(function(data) {
                 $scope.Details = data;
             })
@@ -13,7 +13,7 @@ app.controller('user_details', function($rootScope, $scope, $state, $http, $inte
     $scope.del_user = function(id) {
         $http({
                 method: 'DELETE',
-                url: 'api/employe_details/' + id + "/",
+                url: 'api/authentication_app/users/' + id + "/",
             })
             .success(function(data) {
                 $scope.loadUser();

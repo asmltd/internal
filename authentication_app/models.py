@@ -4,7 +4,7 @@
 # from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.contrib.sessions.backends.db import SessionStore as DBStore
-from django.contrib.sessions.base_session import AbstractBaseSession
+# from django.contrib.sessions.base_session import AbstractBaseSession
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import AbstractUser, Group

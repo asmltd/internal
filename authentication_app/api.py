@@ -15,8 +15,8 @@ class WMSUserViewSet(ViewSet):
 
     @csrf_exempt
     def create(self, request):
-        if not request.user.is_authenticated():
-            return Response(status=status.HTTP_401_UNAUTHORIZED)
+        # if not request.user.is_authenticated():
+        #     return Response(status=status.HTTP_401_UNAUTHORIZED)
         try:
             data = request.data
             newuser = employe_details.objects.create(username=data['username'] if 'username' in data.keys() else "",
@@ -36,7 +36,9 @@ class WMSUserViewSet(ViewSet):
 
     def list(self, request):
 
-        if request.user.is_authenticated():
+        # if not request.user.is_authenticated():
+        #     return Response(status=status.HTTP_401_UNAUTHORIZED)
+
             if request.method == "GET":
 
                 try:
@@ -63,12 +65,13 @@ class WMSUserViewSet(ViewSet):
                            }
 
                 return Response(message)
-        else:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+    #
+    # else:
+    # return Response(status=status.HTTP_400_BAD_REQUEST)
 
     def retrieve(self, request, pk=None):
-        if not request.user.is_authenticated():
-            return Response(status=status.HTTP_401_UNAUTHORIZED)
+        # if not request.user.is_authenticated():
+        #     return Response(status=status.HTTP_401_UNAUTHORIZED)
         if employe_details.objects.filter(pk=pk).exists():
             return Response(employe_details.objects.get(pk=pk).json_ready())
         return Response(status=status.HTTP_401_UNAUTHORIZED)

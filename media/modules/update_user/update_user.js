@@ -7,7 +7,7 @@ app.controller('update_user_controller', function($rootScope, $scope, $state, $h
         // Posting data to php file
         $http({
                 method: 'PATCH',
-                url: 'api/employe_details/' + $scope.id + "/",
+                url: 'api/authentication_app/users/' + $scope.id + "/",
                 data: $scope.user, //forms user object
             })
             .success(function(data) {
@@ -22,9 +22,8 @@ app.controller('update_user_controller', function($rootScope, $scope, $state, $h
                 }
             });
     }
-
     $scope.getUser = function(id) {
-        $http.get('api/employe_details/' + $scope.id + "/", '')
+        $http.get('api/authentication_app/users/' + $scope.id + "/", '')
             .success(function(data) {
                 $scope.user = data;
 //               console.log($scope.Details)

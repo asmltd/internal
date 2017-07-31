@@ -7,12 +7,9 @@ import json
 
 from .models import *
 
-
 class WMSUserViewSet(ViewSet):
-    # base_url = r'/(?P<pk>\d+)/cpu'
     base_url = r'/users'
     base_name = ''
-
     @csrf_exempt
     def create(self, request):
         if not request.user.is_authenticated():
@@ -35,39 +32,14 @@ class WMSUserViewSet(ViewSet):
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
     def list(self, request):
-
         if not request.user.is_authenticated():
             return Response(status=status.HTTP_401_UNAUTHORIZED)
-
         if request.method == "GET":
-
-            # try:
-            #     page_limit = int(request.GET.get('page_limit', 10))  # Set the page limit
-            #     page = int(request.GET.get('page', 1))  # Set the current page
-            # except Exception as e:
-            #     page_limit = 10
-            #     page = 1
-            #
-            # page -= 1  # UI uses 1 based indexing, python 0
-            # export_ = request.GET.get('export', None)
-            # filter_ = request.GET.get('filter', None)
-            # sort_ = request.GET.get('sort', None)
-            # order_ = request.GET.get('order', None)
-
             users = employe_details.objects.all()
-
             result = []
             for user in users:
                 result.append({"id": user.id, "name": user.username, "email": user.email, "password": user.password})
-            # message = {"result": users,
-            #            "number_of_rows": len(users),
-            #            "page": page + 1
-            #
-            #            }
-
             return Response(result)
-
-            #
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
@@ -77,3 +49,33 @@ class WMSUserViewSet(ViewSet):
         if employe_details.objects.filter(pk=pk).exists():
             return Response(employe_details.objects.get(pk=pk).json_ready())
         return Response(status=status.HTTP_401_UNAUTHORIZED)
+
+    @csrf_exempt
+    def partial_update(self, request, pk=None):
+        try:
+            if employe_details.objects.filter(id=pk).count() > 0:
+                user = employe_details.objects.get(id=pk)
+                data = json.loads(request.body)
+
+                if "username" in data:
+                    user.username = data['username']
+                if "email" in data:
+                    user.email = data['email']
+                if "password" in data:
+                    user.set_password(data['password'])
+                user.save()
+                return True
+                return Response({"result": "Updated successfully", "status": True})
+            else:
+                return Response({"result": "Failed - User not found", "status": False})
+        except Exception as e:
+            print e
+            return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+    def destroy(self, request, pk=None):
+        if pk and request.user.is_authenticated():
+            user = employe_details.objects.get(id=pk)
+            user.delete()
+            return Response({"result": "User removed successfully", "status": True})
+        return Response({"result": "User was not removed successfully", "status": False})

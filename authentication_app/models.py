@@ -9,12 +9,9 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import AbstractUser, Group
 
-
-
-
-
 class employe_details(AbstractUser):
     team = models.CharField(max_length=50, default='')
+    image = models.ImageField(null=True,blank=True,upload_to='user_images/')
 
     def json_ready(self, detailed=False):
         data = {'id': self.id,
@@ -22,6 +19,7 @@ class employe_details(AbstractUser):
                 'first_name': self.first_name,
                 'last_name': self.last_name,
                 'email': self.email,
+                'image': str(self.image),
                 'team': self.team if self.team else "",
                 }
 

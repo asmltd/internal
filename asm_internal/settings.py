@@ -109,8 +109,7 @@ PWD = os.path.dirname(os.path.realpath(__file__))
 
 MEDIA_ROOT = os.path.join(PWD, "../media")
 
-MEDIA_URL = ''
-
+MEDIA_URL = '/media/'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (

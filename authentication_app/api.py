@@ -7,7 +7,7 @@ import json
 
 from .models import *
 
-class WMSUserViewSet(ViewSet):
+class UserViewSet(ViewSet):
     base_url = r'/users'
     base_name = ''
     @csrf_exempt
@@ -21,6 +21,7 @@ class WMSUserViewSet(ViewSet):
                                                          'first_name'] if 'first_name' in data.keys() else "",
                                                      last_name=data['last_name'] if 'last_name' in data.keys() else "",
                                                      email=data['email'] if 'email' in data.keys() else "",
+                                                     image=data['image'] if 'image' in data.keys() else "",
                                                      team=data['team'] if 'team' in data.keys() else "")
             password = data['password'] if 'password' in data.keys() else ""
             newuser.set_password(password)
@@ -38,7 +39,7 @@ class WMSUserViewSet(ViewSet):
             users = employe_details.objects.all()
             result = []
             for user in users:
-                result.append({"id": user.id, "name": user.username, "email": user.email, "password": user.password})
+                result.append({"id": user.id, "name": user.username, "email": user.email, "password": user.password,"image":str(user.image)})
             return Response(result)
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
@@ -71,7 +72,6 @@ class WMSUserViewSet(ViewSet):
         except Exception as e:
             print e
             return Response(status=status.HTTP_400_BAD_REQUEST)
-
 
     def destroy(self, request, pk=None):
         if pk and request.user.is_authenticated():

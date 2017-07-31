@@ -38,3 +38,24 @@ app.config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
     $httpProvider.defaults.xsrfHeaderName = 'X-CSRFToken';
         });
 
+
+app.service('fileUpload', ['$http', function ($http) {
+    this.uploadFileToUrl = function(file,user,uploadUrl){
+        var fd = new FormData();
+
+        fd.append('image', file);
+        var keys = Object.keys(user);
+        for(i=0;i<keys.length;i++){
+        fd.append(keys[i], user[keys[i]]);
+        }
+
+        $http.post(uploadUrl, fd, {
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        })
+        .success(function(){
+        })
+        .error(function(){
+        });
+    }
+}]);

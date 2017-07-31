@@ -13,8 +13,10 @@
                         <th>Email</th>
                         <th>Date of joining</th>
                         <th>Last login</th>
+                        <th>Image</th>
                         <th>Remove</th>
                         <th>Edit</th>
+
                     </tr>
                     </thead>
                     <tr ng-repeat="u in Details">
@@ -23,6 +25,8 @@
                         <td>{{u.email}}</td>
                         <td>{{u.date_joined}}</td>
                         <td>{{u.last_login}}</td>
+                        <!--<td>{{u.image}}</td>-->
+                        <td><img src="/media/{{u.image}}"/></td>
                         <td>
                             <span style="">
                                 <i class="fa fa-times" aria-hidden="true" ng-click="del_user(u.id)"></i>
